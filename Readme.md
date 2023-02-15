@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Andrey Vorontsov](https://up.htmlacademy.ru/javascript/28/user/2302307).
-* Наставник: `Неизвестно`.
+* Наставник: [Дмитрий (sench) Железцов](https://htmlacademy.ru/profile/sench).
 
 ---
 
