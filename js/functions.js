@@ -1,8 +1,6 @@
-function checkStringLength(str, length) {
-  return str.length <= length;
-}
+const checkStringLength = (str, length) => str.length <= length;
 
-function isPalindrome(str) {
+const isPalindrome = (str) => {
   const formattedStr = str.replaceAll(' ', '').toLowerCase();
   let reversedStr = '';
 
@@ -10,21 +8,22 @@ function isPalindrome(str) {
     reversedStr += formattedStr[i];
   }
   return formattedStr === reversedStr;
-}
+};
 
-function extractNumbers(param) {
+const extractNumbers = (param) => {
   const str = param.toString();
   let result = '';
 
   for (let i = 0; i < str.length; i++) {
-    if (!isNaN(str[i]) && str[i] !== ' ') {
-      result += str[i];
+    const current = parseInt(str[i], 10);
+    if (!isNaN(current)) {
+      result += current;
     }
   }
   return (result === '') ? NaN : Number(result);
-}
+};
 
-function fillString(str, length, insertionStr) {
+const fillString = (str, length, insertionStr) => {
   if (str.length >= length) {
     return str;
   }
@@ -42,7 +41,7 @@ function fillString(str, length, insertionStr) {
   }
   result += str;
   return result;
-}
+};
 
 
 checkStringLength('проверяемая строка', 20);
