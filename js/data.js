@@ -1,7 +1,10 @@
 import { getRandomInt, getRandomArrayElement } from './util.js';
-
-const PHOTOS_COUNT = 25;
-const MAX_COMMENTS_COUNT = 1000;
+import {
+  PHOTOS_COUNT,
+  MIN_COMMENTS_PER_PHOTO,
+  MAX_COMMENTS_PER_PHOTO,
+  MAX_COMMENTS_TOTAL
+} from './constants.js';
 
 const descriptions = [
   'Лучшее украшение жизни – хорошее настроение.',
@@ -56,7 +59,7 @@ const createRandomIdFromRangeGenerator = (min, max) => {
 };
 
 const generatePhotoId = createRandomIdFromRangeGenerator(1, PHOTOS_COUNT);
-const generateCommentId = createRandomIdFromRangeGenerator(1, MAX_COMMENTS_COUNT);
+const generateCommentId = createRandomIdFromRangeGenerator(1, MAX_COMMENTS_TOTAL);
 
 const createComment = () => {
   const comment = {};
@@ -68,7 +71,7 @@ const createComment = () => {
 };
 
 const getComments = () => {
-  const postCommentsCount = getRandomInt(1, 3);
+  const postCommentsCount = getRandomInt(MIN_COMMENTS_PER_PHOTO, MAX_COMMENTS_PER_PHOTO);
   const comments = [];
   for (let i = 0; i < postCommentsCount; i++) {
     comments.push(createComment());
