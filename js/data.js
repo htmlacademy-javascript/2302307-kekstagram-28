@@ -89,6 +89,6 @@ const createPhotoData = () => {
   return photoData;
 };
 
-const createPhotos = () => Array.from({ length: PHOTOS_COUNT }, createPhotoData);
+const photosData = Array.from({ length: PHOTOS_COUNT }, createPhotoData);
 
-export { createPhotos };
+export { photosData };
