@@ -1,4 +1,5 @@
 import { photosData } from './data.js';
+import { hideExcessComments, updateCommentsCounter, checkLoadCommentsBtn } from './comments.js';
 
 const modal = document.querySelector('.big-picture');
 const commentsList = modal.querySelector('.social__comments');
@@ -12,8 +13,6 @@ const insertPhotoData = (currentPhotoData) => {
   modal.querySelector('.big-picture__img img').src = currentPhotoData.url;
   modal.querySelector('.likes-count').textContent = currentPhotoData.likes;
   modal.querySelector('.social__caption').textContent = currentPhotoData.description;
-
-  // По заданию блок со счётчиком комментариев в этом дз нужно скрыть, поэтому он в окне отображаться не будет
   modal.querySelector('.comments-count').textContent = currentPhotoData.comments.length.toString();
 };
 
@@ -30,6 +29,10 @@ const insertCommentsData = (currentPhotoData) => {
     itemImg.alt = comment.name;
     itemParagraph.textContent = comment.message;
   });
+
+  hideExcessComments();
+  updateCommentsCounter();
+  checkLoadCommentsBtn();
 };
 
 const insertData = (evt) => {

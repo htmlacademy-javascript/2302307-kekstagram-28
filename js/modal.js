@@ -14,10 +14,6 @@ function openModal() {
   modal.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
-
-  // Временно скрываю блоки счётчика комментариев и загрузки новых комментариев
-  document.querySelector('.social__comment-count').classList.add('hidden');
-  document.querySelector('.comments-loader').classList.add('hidden');
 }
 
 function closeModal() {
