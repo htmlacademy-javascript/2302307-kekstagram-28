@@ -5,7 +5,7 @@ const loadCommentsBtn = modal.querySelector('.comments-loader');
 
 const updateCommentsCounter = () => {
   const displayedCommentsCount = modal.querySelectorAll('li[class="social__comment"]').length;
-  modal.querySelector('.comments-displayed').textContent = displayedCommentsCount;
+  modal.querySelector('.comments-displayed').textContent = displayedCommentsCount.toString();
 };
 
 const checkLoadCommentsBtn = () => {
