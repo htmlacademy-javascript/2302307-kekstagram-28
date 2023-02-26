@@ -1,24 +1,24 @@
 import { photosData } from './data.js';
 
-const picturesContainer = document.querySelector('.pictures');
-const pictureTemplate = document.querySelector('#picture')
+const picturesContainerNode = document.querySelector('.pictures');
+const pictureTemplateNode = document.querySelector('#picture')
   .content
   .querySelector('.picture');
 
 const photosFragment = document.createDocumentFragment();
 
 photosData.forEach(({ url, likes, comments }) => {
-  const picture = pictureTemplate.cloneNode(true);
+  const pictureNode = pictureTemplateNode.cloneNode(true);
 
-  picture.querySelector('.picture__img').src = url;
-  picture.querySelector('.picture__likes').textContent = likes;
-  picture.querySelector('.picture__comments').textContent = comments.length;
+  pictureNode.querySelector('.picture__img').src = url;
+  pictureNode.querySelector('.picture__likes').textContent = likes;
+  pictureNode.querySelector('.picture__comments').textContent = comments.length;
 
-  photosFragment.append(picture);
+  photosFragment.append(pictureNode);
 });
 
 const drawPhotos = () => {
-  picturesContainer.append(photosFragment);
+  picturesContainerNode.append(photosFragment);
 };
 
 export { drawPhotos };

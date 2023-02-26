@@ -1,8 +1,8 @@
 import { isEscapeKey } from './util.js';
 import { insertData } from './modal-data.js';
 
-const modal = document.querySelector('.big-picture');
-const modalCloseButton = document.querySelector('#picture-cancel');
+const modalNode = document.querySelector('.big-picture');
+const modalCloseBtnNode = document.querySelector('#picture-cancel');
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -11,13 +11,13 @@ const onDocumentKeydown = (evt) => {
 };
 
 function openModal() {
-  modal.classList.remove('hidden');
+  modalNode.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 }
 
 function closeModal() {
-  modal.classList.add('hidden');
+  modalNode.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 }
@@ -31,7 +31,7 @@ const addPictureHandlers = (pictures) => {
   });
 };
 
-modalCloseButton.addEventListener('click', () => {
+modalCloseBtnNode.addEventListener('click', () => {
   closeModal();
 });
 

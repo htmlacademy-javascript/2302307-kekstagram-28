@@ -3,5 +3,5 @@ import { addPictureHandlers } from './modal.js';
 
 drawPhotos();
 
-const pictures = document.querySelectorAll('.pictures a');
-addPictureHandlers(pictures);
+const pictureNodes = document.querySelectorAll('.pictures a');
+addPictureHandlers(pictureNodes);
