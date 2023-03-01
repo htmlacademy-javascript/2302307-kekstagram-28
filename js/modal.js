@@ -1,8 +1,6 @@
 import { isEscapeKey } from './util.js';
-import { insertData } from './modal-data.js';
 
 const modalNode = document.querySelector('.big-picture');
-const modalCloseBtnNode = document.querySelector('#picture-cancel');
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -22,17 +20,4 @@ function closeModal() {
   document.addEventListener('keydown', onDocumentKeydown);
 }
 
-const addPictureHandlers = (pictures) => {
-  pictures.forEach((picture) => {
-    picture.addEventListener('click', (evt) => {
-      openModal();
-      insertData(evt);
-    });
-  });
-};
-
-modalCloseBtnNode.addEventListener('click', () => {
-  closeModal();
-});
-
-export { addPictureHandlers };
+export { openModal, closeModal };
