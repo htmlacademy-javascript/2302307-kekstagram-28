@@ -1,7 +1,21 @@
 import { drawPhotos } from './thumbnails.js';
-import { addPictureHandlers } from './modal.js';
+import { openModal, closeModal } from './modal.js';
+import { insertData } from './modal-data.js';
+
+import './user-form.js';
 
 drawPhotos();
 
-const pictures = document.querySelectorAll('.pictures a');
-addPictureHandlers(pictures);
+const pictureNodes = document.querySelectorAll('.pictures a');
+const modalCloseBtnNode = document.querySelector('#picture-cancel');
+
+pictureNodes.forEach((pictureNode) => {
+  pictureNode.addEventListener('click', (evt) => {
+    openModal();
+    insertData(evt);
+  });
+});
+
+modalCloseBtnNode.addEventListener('click', () => {
+  closeModal();
+});

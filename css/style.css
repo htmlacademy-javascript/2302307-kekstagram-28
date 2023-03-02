@@ -710,6 +710,29 @@ main {
   border-radius: 5px;
 }
 
+/*
+  Добавил немного стилей для подсказок.
+  Без них сообщение об ошибке выглядит плохо и непонятно.
+  В задании про это не было сказано, поэтому
+  если все таки нельзя, то уберу, но с ними выглядит лучше =)
+*/
+input + .text-help {
+  display: block;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  text-transform: none;
+  font-size: 1em;
+  color: rgb(255, 122, 122);
+}
+
+textarea + .text-help {
+  display: block;
+  margin-bottom: 20px;
+  text-transform: none;
+  font-size: 1em;
+  color: rgb(255, 122, 122);
+}
+
 
 /**
  * Кнопка для отправки изображения

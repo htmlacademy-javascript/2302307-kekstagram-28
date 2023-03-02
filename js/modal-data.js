@@ -1,8 +1,8 @@
 import { photosData } from './data.js';
 import { hideExcessComments, updateCommentsCounter, checkLoadCommentsBtn } from './comments.js';
 
-const modal = document.querySelector('.big-picture');
-const commentsList = modal.querySelector('.social__comments');
+const modalNode = document.querySelector('.big-picture');
+const commentsListNode = modalNode.querySelector('.social__comments');
 
 const commentItemTemplate = `<li class="social__comment">
   <img class="social__picture" src="" alt="" width="35" height="35">
@@ -10,24 +10,23 @@ const commentItemTemplate = `<li class="social__comment">
   </li>`;
 
 const insertPhotoData = (currentPhotoData) => {
-  modal.querySelector('.big-picture__img img').src = currentPhotoData.url;
-  modal.querySelector('.likes-count').textContent = currentPhotoData.likes;
-  modal.querySelector('.social__caption').textContent = currentPhotoData.description;
-  modal.querySelector('.comments-count').textContent = currentPhotoData.comments.length.toString();
+  modalNode.querySelector('.big-picture__img img').src = currentPhotoData.url;
+  modalNode.querySelector('.likes-count').textContent = currentPhotoData.likes;
+  modalNode.querySelector('.social__caption').textContent = currentPhotoData.description;
+  modalNode.querySelector('.comments-count').textContent = currentPhotoData.comments.length.toString();
 };
 
 const insertCommentsData = (currentPhotoData) => {
-  commentsList.innerHTML = '';
+  commentsListNode.innerHTML = '';
   const comments = currentPhotoData.comments;
 
   comments.forEach((comment) => {
-    commentsList.innerHTML += commentItemTemplate;
-    const itemImg = commentsList.querySelector('li:last-of-type img');
-    const itemParagraph = commentsList.querySelector('li:last-of-type p');
+    commentsListNode.innerHTML += commentItemTemplate;
+    const itemImgNode = commentsListNode.querySelector('li:last-of-type img');
 
-    itemImg.src = comment.avatar;
-    itemImg.alt = comment.name;
-    itemParagraph.textContent = comment.message;
+    itemImgNode.src = comment.avatar;
+    itemImgNode.alt = comment.name;
+    commentsListNode.querySelector('li:last-of-type p').textContent = comment.message;
   });
 
   hideExcessComments();
