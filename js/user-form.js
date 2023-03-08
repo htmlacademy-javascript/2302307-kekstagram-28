@@ -1,5 +1,8 @@
 import { isEscapeKey } from './util.js';
+
 import './form-validator.js';
+import './img-scale-control.js';
+import './filter-intensity-slider.js';
 
 const fileInputNode = document.querySelector('#upload-file');
 const formWrapperNode = document.querySelector('.img-upload__overlay');

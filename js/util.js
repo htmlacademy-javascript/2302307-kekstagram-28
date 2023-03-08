@@ -8,4 +8,17 @@ const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.le
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export { getRandomInt, getRandomArrayElement, isEscapeKey };
+const extractNumbers = (param) => {
+  const str = param.toString();
+  let result = '';
+
+  for (let i = 0; i < str.length; i++) {
+    const current = parseInt(str[i], 10);
+    if (!isNaN(current)) {
+      result += current;
+    }
+  }
+  return (result === '') ? NaN : Number(result);
+};
+
+export { getRandomInt, getRandomArrayElement, isEscapeKey, extractNumbers };
