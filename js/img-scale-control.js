@@ -7,7 +7,10 @@ const imgIncreaseScaleBtnNode = formWrapperNode.querySelector('.scale__control--
 const imgScaleValueNode = formWrapperNode.querySelector('.scale__control--value');
 const imgPreviewNode = formWrapperNode.querySelector('.img-upload__preview img');
 
-imgScaleValueNode.value = `${IMG_MAX_SCALE}%`;
+const resetImgScale = () => {
+  imgScaleValueNode.value = `${IMG_MAX_SCALE}%`;
+  imgPreviewNode.style.transform = 'scale(1)';
+};
 
 const decreaseImgScale = () => {
   const currentScale = extractNumbers(imgScaleValueNode.value);
@@ -39,3 +42,5 @@ imgDecreaseScaleBtnNode.addEventListener('click', () => {
 imgIncreaseScaleBtnNode.addEventListener('click', () => {
   increaseImgScale();
 });
+
+export { resetImgScale };

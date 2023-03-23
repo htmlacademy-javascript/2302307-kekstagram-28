@@ -1,5 +1,3 @@
-import { photosData } from './data.js';
-
 const picturesContainerNode = document.querySelector('.pictures');
 const pictureTemplateNode = document.querySelector('#picture')
   .content
@@ -7,17 +5,20 @@ const pictureTemplateNode = document.querySelector('#picture')
 
 const photosFragment = document.createDocumentFragment();
 
-photosData.forEach(({ url, likes, comments }) => {
-  const pictureNode = pictureTemplateNode.cloneNode(true);
+const fillPhotosFragment = (photosData) => {
+  photosData.forEach(({ url, likes, comments }) => {
+    const pictureNode = pictureTemplateNode.cloneNode(true);
 
-  pictureNode.querySelector('.picture__img').src = url;
-  pictureNode.querySelector('.picture__likes').textContent = likes;
-  pictureNode.querySelector('.picture__comments').textContent = comments.length;
+    pictureNode.querySelector('.picture__img').src = url;
+    pictureNode.querySelector('.picture__likes').textContent = likes;
+    pictureNode.querySelector('.picture__comments').textContent = comments.length;
 
-  photosFragment.append(pictureNode);
-});
+    photosFragment.append(pictureNode);
+  });
+};
 
-const drawPhotos = () => {
+const drawPhotos = (photosData) => {
+  fillPhotosFragment(photosData);
   picturesContainerNode.append(photosFragment);
 };
 

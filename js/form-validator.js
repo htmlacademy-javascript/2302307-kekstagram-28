@@ -35,9 +35,4 @@ descriptionInputNode.addEventListener('change', () => {
   pristine.validate();
 });
 
-imgUploadFormNode.addEventListener('submit', (evt) => {
-  const isFormValid = pristine.validate();
-  if (!isFormValid) {
-    evt.preventDefault();
-  }
-});
+export { pristine };
