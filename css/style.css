@@ -718,16 +718,27 @@ input + .text-help {
   margin-top: -15px;
   margin-bottom: 20px;
   text-transform: none;
-  font-size: 1em;
-  color: rgb(255, 122, 122);
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #CC0000;
+
+}
+
+.has-danger input {
+  border: 3px solid #CC0000;
 }
 
 textarea + .text-help {
   display: block;
   margin-bottom: 20px;
   text-transform: none;
-  font-size: 1em;
-  color: rgb(255, 122, 122);
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #CC0000;
+}
+
+.has-danger textarea {
+  border: 3px solid #CC0000;
 }
 
 

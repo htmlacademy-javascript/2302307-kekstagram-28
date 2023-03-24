@@ -5,10 +5,18 @@ const formWrapperNode = document.querySelector('.img-upload__overlay');
 const sliderWrapperNode = formWrapperNode.querySelector('.img-upload__effect-level');
 const sliderNode = sliderWrapperNode.querySelector('.effect-level__slider');
 const filterBtnNodes = formWrapperNode.querySelectorAll('.effects__list input');
+const filterIntensityInputNode = formWrapperNode.querySelector('.effect-level__value');
 
-sliderWrapperNode.classList.add('hidden');
+let slider;
 
-let slider = null;
+const resetSlider = () => {
+  if (slider) {
+    slider.destroy();
+  }
+  slider = null;
+  sliderWrapperNode.classList.add('hidden');
+  filterIntensityInputNode.value = '';
+};
 
 const createSlider = (currentFilter) => {
   sliderWrapperNode.classList.remove('hidden');
@@ -25,9 +33,8 @@ filterBtnNodes.forEach((filterBtnNode) => {
   filterBtnNode.addEventListener('click', (evt) => {
     const currentFilter = evt.target.id.split('-')[1];
 
-    if (currentFilter === 'none') {
-      slider.destroy();
-      sliderWrapperNode.classList.add('hidden');
+    if (currentFilter === 'none' && slider) {
+      resetSlider();
       clearLastFilter();
       return;
     }
@@ -37,3 +44,5 @@ filterBtnNodes.forEach((filterBtnNode) => {
     applyFilter(currentFilter);
   });
 });
+
+export { resetSlider };

@@ -1,4 +1,3 @@
-import { photosData } from './data.js';
 import { hideExcessComments, updateCommentsCounter, checkLoadCommentsBtn } from './comments.js';
 
 const modalNode = document.querySelector('.big-picture');
@@ -34,7 +33,7 @@ const insertCommentsData = (currentPhotoData) => {
   checkLoadCommentsBtn();
 };
 
-const insertData = (evt) => {
+const insertData = (evt, photosData) => {
   const targetSrc = evt.target.src;
   const currentPhotoData = photosData.find((photo) => targetSrc.includes(photo.url));
 
