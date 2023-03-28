@@ -21,4 +21,30 @@ const extractNumbers = (param) => {
   return (result === '') ? NaN : Number(result);
 };
 
-export { getRandomInt, getRandomArrayElement, isEscapeKey, extractNumbers };
+const toggleClass = (node, nodeClass, collection) => {
+  for (const item of collection) {
+    if (item.classList.contains(nodeClass)) {
+      item.classList.remove(nodeClass);
+    }
+  }
+  node.classList.add(nodeClass);
+};
+
+const getRandomIntArray = (min, max, count) => {
+  const nums = new Set();
+  while(nums.size !== count) {
+    nums.add(Math.floor(getRandomInt(min, max)));
+  }
+  return [...nums];
+};
+
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export { getRandomInt, getRandomArrayElement, isEscapeKey, extractNumbers, toggleClass, getRandomIntArray, debounce };

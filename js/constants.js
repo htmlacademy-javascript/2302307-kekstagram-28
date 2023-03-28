@@ -12,6 +12,10 @@ export const IMG_MAX_SCALE = 100;
 
 export const ALERT_SHOW_TIME = 3000;
 
+export const RANDOM_PHOTOS_COUNT = 10;
+
+export const RENDERER_DELAY = 500;
+
 export const BASE_URL = 'https://28.javascript.pages.academy/kekstagram';
 export const Route = {
   GET_DATA: '/data',
