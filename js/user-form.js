@@ -1,4 +1,4 @@
-import { isEscapeKey } from './util.js';
+import { isEscapeKey, checkFileSuffix } from './util.js';
 import { resetImgScale } from './img-scale-control.js';
 import { resetSlider } from './filter-intensity-slider.js';
 import { resetFilter } from './filter.js';
@@ -8,10 +8,11 @@ import { Route } from './constants.js';
 import { SubmitButtonText } from './constants.js';
 import { openErrorModal } from './sending-data-error-modal.js';
 import { openSuccessModal } from './sending-data-success-modal.js';
+import { showErrorAlert } from './alert.js';
+import { FILE_TYPES, ErrorText } from './constants.js';
 
 import './img-scale-control.js';
 import './filter-intensity-slider.js';
-
 
 const fileInputNode = document.querySelector('#upload-file');
 const formWrapperNode = document.querySelector('.img-upload__overlay');
@@ -20,6 +21,8 @@ const hashtagInputNode = formWrapperNode.querySelector('.text__hashtags');
 const descriptionInputNode = formWrapperNode.querySelector('.text__description');
 const closeFormBtnNode = formWrapperNode.querySelector('#upload-cancel');
 const submitBtnNode = formWrapperNode.querySelector('#upload-submit');
+const imgPreviewNode = formWrapperNode.querySelector('.img-upload__preview img');
+let imgObjectURL = null;
 
 const clearControls = () => {
   resetImgScale();
@@ -68,18 +71,28 @@ const enableSubmitBtn = () => {
   submitBtnNode.textContent = SubmitButtonText.IDLE;
 };
 
-function openFormModal() {
+const openFormModal = () => {
+  const file = fileInputNode.files[0];
+  if (!checkFileSuffix(file, FILE_TYPES)) {
+    showErrorAlert(ErrorText.UPLOAD_FILE);
+    fileInputNode.value = '';
+    return;
+  }
+
+  imgObjectURL = URL.createObjectURL(file);
+  imgPreviewNode.src = imgObjectURL;
   clearControls();
   formWrapperNode.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onFormDocumentKeydown);
-}
+};
 
 function closeFormModal() {
   formWrapperNode.classList.add('hidden');
   document.body.classList.remove('modal-open');
   clearForm();
   enableSubmitBtn();
+  URL.revokeObjectURL(imgObjectURL);
 }
 
 fileInputNode.addEventListener('change', () => {

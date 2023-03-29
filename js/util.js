@@ -1,14 +1,14 @@
-const getRandomInt = (min, max) => {
+export const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
+export const getRandomArrayElement = (elements) => elements[getRandomInt(0, elements.length - 1)];
 
-const isEscapeKey = (evt) => evt.key === 'Escape';
+export const isEscapeKey = (evt) => evt.key === 'Escape';
 
-const extractNumbers = (param) => {
+export const extractNumbers = (param) => {
   const str = param.toString();
   let result = '';
 
@@ -21,7 +21,7 @@ const extractNumbers = (param) => {
   return (result === '') ? NaN : Number(result);
 };
 
-const toggleClass = (node, nodeClass, collection) => {
+export const toggleClass = (node, nodeClass, collection) => {
   for (const item of collection) {
     if (item.classList.contains(nodeClass)) {
       item.classList.remove(nodeClass);
@@ -30,7 +30,7 @@ const toggleClass = (node, nodeClass, collection) => {
   node.classList.add(nodeClass);
 };
 
-const getRandomIntArray = (min, max, count) => {
+export const getRandomIntArray = (min, max, count) => {
   const nums = new Set();
   while(nums.size !== count) {
     nums.add(Math.floor(getRandomInt(min, max)));
@@ -38,7 +38,7 @@ const getRandomIntArray = (min, max, count) => {
   return [...nums];
 };
 
-const debounce = (callback, timeoutDelay) => {
+export const debounce = (callback, timeoutDelay) => {
   let timeoutId;
 
   return (...rest) => {
@@ -47,4 +47,8 @@ const debounce = (callback, timeoutDelay) => {
   };
 };
 
-export { getRandomInt, getRandomArrayElement, isEscapeKey, extractNumbers, toggleClass, getRandomIntArray, debounce };
+export const checkFileSuffix = (file, validSuffixes) => {
+  const fileName = file.name.toLowerCase();
+  const matches = validSuffixes.some((suffix) => fileName.endsWith(suffix));
+  return matches;
+};
